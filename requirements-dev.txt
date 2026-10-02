@@ -1,0 +1,6 @@
+-r repol/requirements.txt
+pre-commit
+ruff
+ipython
+pytest
+build

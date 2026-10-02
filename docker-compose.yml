@@ -1,0 +1,11 @@
+services:
+  repol:
+    build: .
+    container_name: repol
+    network_mode: "host"
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./models:/app/models:ro
+      # SDS archive: host path must match sds.archive in config.yaml (/data/archive)
+      - /my/archive/path:/data/archive:ro

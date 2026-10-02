@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "REPOL"
+version = "1.0.0"
+description = "SeisComP-dependent near real-time First Motion Polarities Classifier"
+readme = "README.md"                      # <- add
+license = "GPL-3.0-or-later" 
+authors = [
+    { name = "Ioannis Spingos", email = "ispingos@geol.uoa.gr" },
+    { name = "Vasilis Kapetanidis", email = "vkapetan@geol.uoa.gr"},
+    { name = "Angelos Zymvragakis", email = "azymvragakis@geol.uoa.gr" },
+    { name = "George Kaviris", email = "gkaviris@geol.uoa.gr"}
+]
+requires-python = ">=3.12"
+dynamic = ["dependencies"]
+
+[project.urls]
+Repository = "https://github.com/nkua-seismolab/REPOL"
+Issues = "https://github.com/nkua-seismolab/REPOL/issues"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["repol/requirements.txt"]}
+
+[project.scripts]
+repol = "repol.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["repol*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["models", ".venv"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (import ordering)
+    "UP",  # pyupgrade (modern syntax)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["repol"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

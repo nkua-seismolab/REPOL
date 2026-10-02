@@ -1,0 +1,37 @@
+# Copy to a private configuration and set connection details for your SeisComP.
+# Paths are relative to the working directory. Unlisted options use defaults.
+seiscomp:
+  host: 127.0.0.1
+  database: mysql://sysop:sysop@127.0.0.1/seiscomp # Set locally or pass -d; never publish credentials.
+  wait_time: 15 # Allow waveform archiving to finish; offline demos can use less.
+  reprocess: false
+sds:
+  # - if running with Docker: leave this as /data/archive as it is the archive's
+  #   path inside the container
+  # - if not using Docker: set it to your SDS archive
+  archive: /data/archive
+model:
+  path: models/DiTingMotionJul.hdf5
+waveform:
+  t_before: 10.0 # Seconds of data acquired before the pick time.
+  t_after: 120.0 # Seconds of data acquired after the pick time.
+  target_sampling_rate: 100.0 # Hz; must match the selected model's training.
+  model_half_window: 0.64 # Seconds; 2 * half_window * rate must match model samples.
+  decimate: true # Integer downsampling only; no upsampling.
+  filter: [] # Optional bandpass before classification: [freqmin, freqmax] or [].
+spratio:
+  enabled: true # Measure S/P amplitude ratios (stored as a pick comment).
+  use_observed_s: true # Use the observed S arrival; else theoretical vp/vs times.
+  vp: 6.0 # km/s
+  vs: 3.5 # km/s
+  p_window: 2.0 # s; P amplitude search window.
+  s_window: 10.0 # s; S amplitude search window.
+  highpass: 1.0 # Hz; highpass applied before amplitude picking.
+  cut_time: 3.0 # s; trimmed from the trace start after filtering.
+  pre_pick: 5.0 # s; analysis window starts this much before the P pick.
+  min_sp_time: 0.3 # s; minimum S-P time for observed S to be used.
+processing:
+  fetch_workers: 4
+logging:
+  level: DEBUG
+  file: null
