@@ -8,7 +8,7 @@ Near real-time P-wave first-motion polarity, onset, and S/P amplitude-ratio dete
 
 REPOL is part of a four-application workflow for automatic weak-event source characterization:
 
-**[REPOL](https://github.com/nkua-seismolab/REPOL)** → [RESS](https://github.com/nkua-seismolab/RESS) → [REHASH](https://github.com/nkua-seismolab/REHASH) → [REBayFM](https://github.com/nkua-seismolab/REBayFM)
+**[REPOL](https://github.com/nkua-seismolab/REPOL)** / [RESS](https://github.com/nkua-seismolab/RESS) -> [REHASH](https://github.com/nkua-seismolab/REHASH) / [REBayFM](https://github.com/nkua-seismolab/REBayFM)
 
 ## How it works
 
